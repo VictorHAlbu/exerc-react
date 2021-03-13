@@ -24,13 +24,32 @@ const mario = {
 };
 
 const App = () => {
+
+  const livros = [
+    { nome: 'Baixa da égua', ano: 1996 },
+    { nome: 'Lagoa Azul', ano: 1998 },
+    { nome: 'Fim do Mundo', ano: 2000 },
+
+  ];
+
   const dados = luana;
   const total = dados.compras
     .map((item) => Number(item.preco.replace('R$', '')))
     .reduce((a, b) => a + b);
 
   return (
-    <di>
+    <div>
+
+      <ul>
+        {livros
+          .filter(({ ano }) => ano >= 1998)
+          .map(({ nome, ano }) => (
+            <li key={nome}>
+              {nome}, {ano}
+            </li>
+          ))}
+      </ul>
+
       <p>Nome: {dados.cliente}</p>
       <p>idade: {dados.idade}</p>
       <p>
@@ -39,7 +58,7 @@ const App = () => {
       </p>
       <p>Total: {total}</p>
       {total > 10000 && <p>Você está gastando muito</p>}
-    </di>
+    </div>
   )
 };
 
