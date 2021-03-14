@@ -13,6 +13,7 @@ const Form = () => {
                 <label htmlFor="email"> Email</label>
                 <Input />
             </p>
+            
         </form>
     )
 }
