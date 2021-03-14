@@ -1,27 +1,27 @@
 import React from 'react';
 
-const luana = {
-    cliente: 'Luana',
-    idade: 27,
-    compras: [
-        { nome: 'Notebok', preco: 'R$ 2500' },
-        { nome: 'Geladeira', preco: 'R$ 3000' },
-        { nome: 'Smartphone', preco: 'R$ 1500' },
-    ],
-    ativa: true,
-};
+// const luana = {
+//     cliente: 'Luana',
+//     idade: 27,
+//     compras: [
+//         { nome: 'Notebok', preco: 'R$ 2500' },
+//         { nome: 'Geladeira', preco: 'R$ 3000' },
+//         { nome: 'Smartphone', preco: 'R$ 1500' },
+//     ],
+//     ativa: true,
+// };
 
-const mario = {
-    cliente: 'Mario',
-    idade: 31,
-    compras: [
-        { nome: 'Notebok', preco: 'R$ 2500' },
-        { nome: 'Geladeira', preco: 'R$ 3000' },
-        { nome: 'Smartphone', preco: 'R$ 1500' },
-        { nome: 'Guitarra', preco: 'R$ 3500' },
-    ],
-    ativa: false,
-};
+// const mario = {
+//     cliente: 'Mario',
+//     idade: 31,
+//     compras: [
+//         { nome: 'Notebok', preco: 'R$ 2500' },
+//         { nome: 'Geladeira', preco: 'R$ 3000' },
+//         { nome: 'Smartphone', preco: 'R$ 1500' },
+//         { nome: 'Guitarra', preco: 'R$ 3500' },
+//     ],
+//     ativa: false,
+// };
 
 
 
@@ -42,16 +42,42 @@ const mario = {
 //     fontFamily: 'helvetica',
 // }
 
-const livros = [
-    { nome: 'Baixa da égua', ano: 1996 },
-    { nome: 'Lagoa Azul', ano: 1998 },
-    { nome: 'Fim do Mundo', ano: 2000 },
+// const livros = [
+//     { nome: 'Baixa da égua', ano: 1996 },
+//     { nome: 'Lagoa Azul', ano: 1998 },
+//     { nome: 'Fim do Mundo', ano: 2000 },
+
+// ];
+
+const produtos = [
+    {
+        id: 1,
+        nome: 'Smatphone',
+        preco: 'R$ 2000',
+        cores: ['#29d8d5', '#252a34', '#fc3766'],
+    },
+    {
+        id: 2,
+        nome: 'Notebook',
+        preco: 'R$ 3000',
+        cores: ['#ffd045', '#d4394b', '#f37c59'],
+    },
+    {
+        id: 3,
+        nome: 'Tablet',
+        preco: 'R$ 1500',
+        cores: ['#365069', '#47c1c8', '#f95786'],
+    },
 
 ];
 
 //APP
 
 const App = () => {
+    const dados = produtos
+        .filter(({ preco }) => Number(preco.replace('R$', '')) > 1500,
+    );
+
     // const dados = mario;
     // const total = dados.compras
     //     .map((item) => Number(item.preco.replace('R$ ', ' ')))
@@ -63,14 +89,29 @@ const App = () => {
 
     return (
         <>
-            <ul>
+            <section>
+                {dados.map(({ id, nome, preco, cores }) => (
+                    <div key={id}>
+                        <h1>{nome}</h1>
+                        <p>Preço:{preco}</p>
+
+                        <ul>{cores.map((cor) =>
+                            <li style={{ backgroundColor: cor, color: "white" }} key={cor}>
+                                {cor}</li>
+                        )}
+                        </ul>
+                    </div>
+                ))}
+
+            </section>
+
+
+            {/* <ul>
                 {livros.filter(({ ano }) => ano >= 1998)
                     .map(({ nome, ano }) => (
                         <li key={nome}>{nome}, {ano}</li>
                     ))}
-            </ul>
-
-
+            </ul> */}
 
             {/* <p>Nome:{dados.cliente}</p>
             <p>Preço: {dados.idade}</p>
